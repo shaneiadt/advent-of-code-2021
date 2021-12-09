@@ -8,8 +8,8 @@
             "request": "launch",
             "name": "Launch Program",
             "type": "pwa-node",
-            "program": "${workspaceFolder}/day-4/main.ts",
-            "cwd": "${workspaceFolder}/day-4",
+            "program": "${workspaceFolder}/day-5/main.ts",
+            "cwd": "${workspaceFolder}/day-5",
             "runtimeExecutable": "C:\\Users\\ShaneO'Moore\\.deno\\bin\\deno.EXE",
             "runtimeArgs": [
                 "run",
