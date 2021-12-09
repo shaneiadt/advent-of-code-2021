@@ -1,7 +1,8 @@
 export default class Board {
+    public bid: number;
     public rows: Row[] = [];
 
-    constructor(numbers: number[][]) {
+    constructor(numbers: number[][], bid: number) {
         const cells: Cell[][] = [];
 
         for (const rowOfNumbers of numbers) {
@@ -9,6 +10,7 @@ export default class Board {
         }
 
         this.rows = cells.map(cell => new Row(cell));
+        this.bid = bid;
     }
 
     public checkNumber = (number: number) => {
