@@ -1,9 +1,5 @@
 import exampleInput from './example.ts';
 
-enum Axis {
-    X = 'X',
-    Y = 'Y'
-}
 class Diagram {
     private diagram: number[][];
 
@@ -13,7 +9,8 @@ class Diagram {
         const highestAxis = this.getHighestAxis(lines);
 
         this.diagram = this.createDiagram(highestAxis);
-        this.drawLines(lines);
+        const linesDrawn = this.drawLines(lines);
+        debugger;
     }
 
     public get = () => this.diagram;
@@ -23,23 +20,20 @@ class Diagram {
             const [x1, y1] = line[0];
             const [x2, y2] = line[1];
 
-            const array = [];
+            let entry = [x1, y1];
+            let array = [[x1, y1]];
 
-            let temp = [...line[0]];
+            while (entry[0] !== x2 || entry[1] !== y2) {
+                const xDir = entry[0] === x2 ? x2 : entry[0] < x2 ? entry[0] + 1 : entry[0] - 1;
+                const yDir = entry[1] === y2 ? y2 : entry[1] < y2 ? entry[1] + 1 : entry[1] - 1;
 
-            debugger;
-            
-            while (temp[0] !== x2 && temp[1] !== y2) {
-            debugger;
-                const newEntry = [...temp];
+                array.push([xDir, yDir]);
 
-                temp[0] = temp[0] + 1;
-                newEntry[0] = newEntry[0] + 1;
-
-                array.push(newEntry);
-                debugger;
+                entry[0] = xDir;
+                entry[1] = yDir;
             }
 
+            return array;
         });
     }
 
