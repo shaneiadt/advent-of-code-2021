@@ -5,13 +5,34 @@ export default class Diagram {
         const array = list.map(item => ([item.slice(0, 2), item.slice(2, 4)]));
         const lines = this.getLines(array);
         const highestAxis = this.getHighestAxis(lines);
+        const linesDrawn = this.drawLines(lines);
 
         this.diagram = this.createDiagram(highestAxis);
-        const linesDrawn = this.drawLines(lines);
-        debugger;
+
+        this.buildDiagram(linesDrawn);
     }
 
     public get = () => this.diagram;
+
+    public countOverlappingLines = () => {
+        let count = 0;
+
+        for (const row of this.diagram) {
+            for (const num of row) {
+                if (num >= 2) count++;
+            }
+        }
+
+        return count;
+    }
+
+    private buildDiagram = (lines: number[][][]) => {
+        for (const row of lines) {
+            for (const coord of row) {
+                this.diagram[coord[1]][coord[0]] += 1;
+            }
+        }
+    }
 
     private drawLines = (lines: number[][][]) => {
         return lines.map(line => {
@@ -21,9 +42,11 @@ export default class Diagram {
             let entry = [x1, y1];
             let array = [[x1, y1]];
 
+            const fn = (entry: number, axis: number) => entry === axis ? axis : entry < axis ? entry + 1 : entry - 1
+
             while (entry[0] !== x2 || entry[1] !== y2) {
-                const xDir = entry[0] === x2 ? x2 : entry[0] < x2 ? entry[0] + 1 : entry[0] - 1;
-                const yDir = entry[1] === y2 ? y2 : entry[1] < y2 ? entry[1] + 1 : entry[1] - 1;
+                const xDir = fn(entry[0], x2);
+                const yDir = fn(entry[1], y2);
 
                 array.push([xDir, yDir]);
 
@@ -38,7 +61,7 @@ export default class Diagram {
     private createDiagram = (axis: { x: number, y: number }) => {
         const diagram = [];
 
-        for (let index = 0; index < axis.y; index++) {
+        for (let index = 0; index < axis.y + 1; index++) {
             const row = Array.from({ length: axis.x + 1 }, () => 0);
 
             diagram.push(row);
