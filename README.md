@@ -5,4 +5,5 @@
 - **Day 3**: [Binary Diagnostic](https://adventofcode.com/2021/day/3) 👩‍💻 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-3)
 - **Day 4**: [Giant Squid](https://adventofcode.com/2021/day/4) 🦑 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-4)
 - **Day 5**: [Hydrothermal Venture](https://adventofcode.com/2021/day/5) 🚿 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-5)
-- **Day 6**: [Lanternfish ](https://adventofcode.com/2021/day/6) 🐟 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-6)
+- **Day 6**: [Lanternfish](https://adventofcode.com/2021/day/6) 🐟 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-6)
+- **Day 7**: [The Treachery of Whales](https://adventofcode.com/2021/day/7) 🦀 - [View Solution](https://github.com/shaneiadt/advent-of-code-2021/tree/main/day-7)
